@@ -28,13 +28,22 @@ else
 
   # Configure and make the file
   cd ./node-$version
-  ./configure
-  make
+#  ./configure
+#  make
 
   # Install and make a package
-  sudo checkinstall -D -pkgversion ${version#?} -y
+#  sudo checkinstall -D -pkgversion ${version#?} -y
+  # Move the package do the files directory
+  cp node_${version#?}-1_armhf.deb ../../../files
+  
+  # Add and commit the new file
+  cd ../../../
+  git add .
+  git commit -m "Updated node version to $version"
+#  git push origin master
+#  git push heroku master
 
   # Rename the new changelog to the old one
-  cd ../../
+  cd ./scripts/
   mv ./new-log.html changelog.html 
 fi
