@@ -36,8 +36,13 @@ else
   # Move the package do the files directory
   cp node_${version#?}-1_armhf.deb ../../../files
   
-  # Add and commit the new file
+
+
+  # Remove the compilation directories
   cd ../../../
+  rm -rf ./scripts/node/node-$version
+
+  # Commit and push all the files
   git add .
   git commit -m "Updated node version to $version"
 #  git push origin master
