@@ -8,7 +8,7 @@ sudo dpkg -i node_latest_armhf.deb
 node -v
 ```
 
-This will install node.js version 0.10.19
+This will install node.js version 0.10.18
 Other versions are available:
 - node_0.10.18-1_armhf.deb
 - node_0.10.17-1_armhf.deb
