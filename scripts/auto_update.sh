@@ -6,6 +6,7 @@ wget http://nodejs.org/changelog.html -O new-log.html
 # Assign the two starting files to diff
 file1='./changelog.html'
 file2='./new-log.html'
+appfile='web.js'
 
 # Check if the files are different
 if diff $file1 $file2;
@@ -39,6 +40,33 @@ else
   # Remove the compilation directories
   cd ../../../
   sudo rm -rf ./scripts/node/node-$version
+
+  # Remove the last 11 lines from web.js
+  head -n -9 crap.js > tmp.js
+  mv tmp.js crap.js
+
+  # Delete the oldest package
+  cd files
+  ls | sort | head -1 | xargs rm
+
+  # Replace existing routes in web.js
+  FILES=*
+  count=0
+  for f in $FILES
+  do
+    count=$(($count + 1))
+    if [[ "$count" -gt 2 ]]
+    then
+      # Write the specific routes for versions
+      echo "app.get('/node_latest_armhf.deb', function (req, res) {" >> ../$appfile
+
+    else
+      # Write the route for the newest package
+      echo "app.get('/$f', function (req, res) {" >> ../crap.js >> ../$appfile
+    fi
+    echo "  res.download(__dirname + '/files/$f');" >> ../$appfile
+    echo "});" >> ../$appfile
+  done
 
   # Commit and push all the files
   git add .
