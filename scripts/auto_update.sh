@@ -42,12 +42,12 @@ else
   sudo rm -rf ./scripts/node/node-$version
 
   # Remove the last 11 lines from web.js
-  head -n -9 crap.js > tmp.js
-  mv tmp.js crap.js
+  head -n -9 web.js > tmp.js
+  mv tmp.js web.js
 
   # Delete the oldest package
   cd files
-  ls | sort | head -1 | xargs rm
+  ls | sort | head -1 | xargs git rm
 
   # Replace existing routes in web.js
   FILES=*
@@ -62,7 +62,7 @@ else
 
     else
       # Write the route for the newest package
-      echo "app.get('/$f', function (req, res) {" >> ../crap.js >> ../$appfile
+      echo "app.get('/$f', function (req, res) {" >> ../web.js >> ../$appfile
     fi
     echo "  res.download(__dirname + '/files/$f');" >> ../$appfile
     echo "});" >> ../$appfile
