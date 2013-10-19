@@ -8,10 +8,10 @@ sudo dpkg -i node_latest_armhf.deb
 node -v
 ```
 
-This will install node.js version 0.10.20
+This will install node.js version 0.10.21
 Other versions are available:
 - node_0.10.18-1_armhf.deb
-- node_0.10.17-1_armhf.deb
+- node_0.10.20-1_armhf.deb
 
 Just replace "node_latest_armhf.deb" with one of these names.
 
