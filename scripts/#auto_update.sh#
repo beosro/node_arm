@@ -38,8 +38,7 @@ else
   cp node_${version#?}-1_armhf.deb ../../../files
   
   # Remove the compilation directories
-  cd ../../../
-  sudo rm -rf ./scripts/node/node-$version
+  cd ../../..rm -rf ./scripts/node/node-$version
 
   # Remove the last 11 lines from web.js
   head -n -9 web.js > tmp.js
@@ -69,7 +68,6 @@ else
   done
 
   # Commit and push all the files
-  cd ../
   git add .
   git commit -m "Updated node version to $version"
   git push origin master
