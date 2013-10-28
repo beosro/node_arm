@@ -4,6 +4,7 @@
 wget http://nodejs.org/changelog.html -O new-log.html
 
 # Assign the two starting files to diff
+cd /home/pi/node_arm/scripts
 file1='./changelog.html'
 file2='./new-log.html'
 appfile='web.js'
@@ -72,8 +73,8 @@ else
   cd ../
   git add .
   git commit -m "Updated node version to $version"
-#  git push origin master
-#  git push heroku master
+  git push origin master
+  git push heroku master
 
   # Rename the new changelog to the old one
   cd ./scripts/
