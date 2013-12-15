@@ -15,6 +15,8 @@ Other versions are available:
 
 Just replace "node_latest_armhf.deb" with one of these names.
 
+To run the script that generates the package make sure you have make, gcc, and checkinstall installed. Then cd into the 'scripts' directory and type
+`sudo ./auto_update.sh`
 
 ### License
 
