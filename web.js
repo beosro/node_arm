@@ -5,12 +5,12 @@ var server = http.createServer(app).listen(process.env.PORT || 9090);
 console.log("Listening on port " + (process.env.PORT || "9090"));
 
 // Routes
-app.get('/node_0.10.21-1_armhf.deb', function (req, res) {
-  res.download(__dirname + '/files/node_0.10.21-1_armhf.deb');
-});
 app.get('/node_0.10.22-1_armhf.deb', function (req, res) {
   res.download(__dirname + '/files/node_0.10.22-1_armhf.deb');
 });
-app.get('/node_latest_armhf.deb', function (req, res) {
+app.get('/node_0.10.23-1_armhf.deb', function (req, res) {
   res.download(__dirname + '/files/node_0.10.23-1_armhf.deb');
+});
+app.get('/node_latest_armhf.deb', function (req, res) {
+  res.download(__dirname + '/files/node_0.10.24-1_armhf.deb');
 });
