@@ -42,8 +42,8 @@ else
   cd ../../../
   sudo rm -rf ./scripts/node/node-$version
 
-  # Remove the last 11 lines from web.js
-  head -n -9 web.js > tmp.js
+  # Remove routes from web.js
+  head -n -12 web.js > tmp.js
   mv tmp.js web.js
 
   # Delete the oldest package
@@ -65,6 +65,7 @@ else
       # Write the route for the newest package
       echo "app.get('/$f', function (req, res) {" >> ../web.js >> ../$appfile
     fi
+    echo "  insert_ip(req.connection.remoteAddress, $count);" >> ../$appfile
     echo "  res.download(__dirname + '/files/$f');" >> ../$appfile
     echo "});" >> ../$appfile
   done

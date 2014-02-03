@@ -6,6 +6,7 @@
     "url" : "http://github.com/nathanjohnson320/node_arm.git"
   },
   "dependencies": {
+    "mongodb": "*",
     "express": "3.x"
   },
   "engines": {
