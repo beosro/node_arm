@@ -8,10 +8,10 @@ sudo dpkg -i node_latest_armhf.deb
 node -v
 ```
 
-This will install node.js version 0.10.25
+This will install node.js version 0.10.26
 Other versions are available:
-- node_0.10.23-1_armhf.deb
 - node_0.10.24-1_armhf.deb
+- node_0.10.25-1_armhf.deb
 
 Just replace "node_latest_armhf.deb" with one of these names.
 
