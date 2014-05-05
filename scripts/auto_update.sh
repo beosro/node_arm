@@ -1,83 +1,67 @@
 #!/bin/bash
 
-# Get the changelog
-wget http://nodejs.org/changelog.html -O new-log.html
+# If they are different print a message
+echo "$file1 and $file2 differ"
 
-# Assign the two starting files to diff
-cd /home/pi/node_arm/scripts
-file1='./changelog.html'
-file2='./new-log.html'
-appfile='web.js'
+# Get the most recent version of node
+url=http://nodejs.org/dist/latest/node-
+version=$(node getpage.js)
+url+=$version.tar.gz
+wget $url -O ./node/node.source.tar.gz
 
-# Check if the files are different
-if diff $file1 $file2;
-then
-  echo "$file1 and $file2 are the same file"
-else
-  # If they are different print a message
-  echo "$file1 and $file2 differ"
+# change into the node directory and untar
+cd ./node
+tar -xvzf node.source.tar.gz
+rm node.source.tar.gz
 
-  # Get the most recent version of node
-  url=http://nodejs.org/dist/latest/node-
-  version=$(node getpage.js)
-  url+=$version.tar.gz
-  wget $url -O ./node/node.source.tar.gz
+# Configure and make the file
+cd ./node-$version
+./configure
+make
 
-  # change into the node directory and untar
-  cd ./node
-  tar -xvzf node.source.tar.gz
-  rm node.source.tar.gz
+# Install and make a package
+sudo checkinstall -D -pkgversion ${version#?} -y
+# Move the package do the files directory
+cp node_${version#?}-1_armhf.deb ../../../files
 
-  # Configure and make the file
-  cd ./node-$version
-  ./configure
-  make
+# Remove the compilation directories
+cd ../../../
+sudo rm -rf ./scripts/node/node-$version
 
-  # Install and make a package
-  sudo checkinstall -D -pkgversion ${version#?} -y
-  # Move the package do the files directory
-  cp node_${version#?}-1_armhf.deb ../../../files
-  
-  # Remove the compilation directories
-  cd ../../../
-  sudo rm -rf ./scripts/node/node-$version
+# Remove routes from web.js
+head -n -12 web.js > tmp.js
+mv tmp.js web.js
 
-  # Remove routes from web.js
-  head -n -12 web.js > tmp.js
-  mv tmp.js web.js
+# Delete the oldest package
+cd files
+ls | sort | head -1 | xargs git rm
 
-  # Delete the oldest package
-  cd files
-  ls | sort | head -1 | xargs git rm
+# Replace existing routes in web.js
+FILES=*
+count=0
+for f in $FILES
+do
+  count=$(($count + 1))
+  if [[ "$count" -gt 2 ]]
+  then
+    # Write the specific routes for versions
+    echo "app.get('/node_latest_armhf.deb', function (req, res) {" >> ../$appfile
+  else
+    # Write the route for the newest package
+    echo "app.get('/$f', function (req, res) {" >> ../web.js >> ../$appfile
+  fi
+  echo "  insert_ip(req.connection.remoteAddress, $count);" >> ../$appfile
+  echo "  res.download(__dirname + '/files/$f');" >> ../$appfile
+  echo "});" >> ../$appfile
+done
 
-  # Replace existing routes in web.js
-  FILES=*
-  count=0
-  for f in $FILES
-  do
-    count=$(($count + 1))
-    if [[ "$count" -gt 2 ]]
-    then
-      # Write the specific routes for versions
-      echo "app.get('/node_latest_armhf.deb', function (req, res) {" >> ../$appfile
-
-    else
-      # Write the route for the newest package
-      echo "app.get('/$f', function (req, res) {" >> ../web.js >> ../$appfile
-    fi
-    echo "  insert_ip(req.connection.remoteAddress, $count);" >> ../$appfile
-    echo "  res.download(__dirname + '/files/$f');" >> ../$appfile
-    echo "});" >> ../$appfile
-  done
-
-  # Commit and push all the files
-  cd ../
-  git add .
-  git commit -m "Updated node version to $version"
+# Commit and push all the files
+cd ../
+git add .
+git commit -m "Updated node version to $version"
 #  git push origin master
 #  git push heroku master
 
-  # Rename the new changelog to the old one
-  cd ./scripts/
-  mv ./new-log.html changelog.html 
-fi
+# Rename the new changelog to the old one
+cd ./scripts/
+mv ./new-log.html changelog.html 
