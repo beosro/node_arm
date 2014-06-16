@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# If they are different print a message
-echo "$file1 and $file2 differ"
-
 # Get the most recent version of node
 url=http://nodejs.org/dist/latest/node-
-version=$(node getpage.js)
+version=
 url+=$version.tar.gz
 wget $url -O ./node/node.source.tar.gz
 
