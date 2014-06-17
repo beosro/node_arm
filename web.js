@@ -29,5 +29,5 @@ app.get('/node_0.10.28-1_armhf.deb', function (req, res) {
 });
 app.get('/node_latest_armhf.deb', function (req, res) {
   insert_ip(req.connection.remoteAddress, 2);
-  res.download(__dirname + '/files/node_0.10.29-1_armhf.deb');
+  res.download(__dirname + '/files/node_latest_armhf.deb');
 });
