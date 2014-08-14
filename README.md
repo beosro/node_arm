@@ -8,19 +8,16 @@ sudo dpkg -i node_latest_armhf.deb
 node -v
 ```
 
-This will install node.js version 0.10.29
+This will install node.js version 0.10.30
 Other versions are available:
-- node_0.10.26-1_armhf.deb
 - node_0.10.28-1_armhf.deb
+- node_0.10.29-1_armhf.deb
 
 Just replace "node_latest_armhf.deb" with one of these names.
 
-To run the script that generates the package make sure you have make, gcc, and checkinstall installed. Then cd into the 'scripts' directory and type
-`sudo ./auto_update.sh`
-
 ### License
 
-Copyright (c) 2013, Nathaniel Johnson
+Copyright (c) 2014, Nathaniel Johnson
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
