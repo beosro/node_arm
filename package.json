@@ -1,16 +1,22 @@
 {
   "name": "node-arm",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "repository" :
   { "type" : "git",
     "url" : "http://github.com/nathanjohnson320/node_arm.git"
   },
-  "dependencies": {
-    "mongodb": "*",
-    "express": "3.x"
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
   },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
+  "dependencies": {
+    "express": "~4.2.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "jade": "~1.3.0",
+    "mongodb": "1.4.8"
   }
 }

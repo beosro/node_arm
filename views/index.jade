@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  header
+    div(id="title")
+      img(id="title-img", src="images/logo.png", class="img-responsive",alt="Responsive image")
+    div(id="subtitle")
+      span An easy way to install node.js on the Raspberry Pi
+  div(class="separator")
+  div(class="row content")
+    div(class="col-md-2")
+      img(class="img-circle content-img center-block", src="images/nodejs.png", style="margin-top: 50px;")
+      span(class="caption") Node.JS
+    span(class="col-md-2 equation") +
+    div(class="col-md-2")
+      img(class="content-img center-block", src="images/rpi.png")
+      span(class="caption") Raspberry Pi
+    span(class="col-md-2 equation") =
+    div(class="col-md-4")
+      img(class="img-circle content-img center-block", src="images/project.png")
+      span(class="caption") Cool Projects!
+  div(class="separator")
+  div(id="steps")
+    h1 Step 1: Download
+    ul
+      li
+        a(href="/node_latest_armhf.deb", class="download-link") v0.10.30 
+        span(class="download-count") (#{download_count_1} downloads)
+      li
+        a(href="/node_0.10.29_armhf.deb", class="download-link") v0.10.29 
+        span(class="download-count") (#{download_count_2} downloads)
+      li
+        a(href="/node_0.10.28_armhf.deb", class="download-link") v0.10.28 
+        span(class="download-count") (#{download_count_3} downloads)
+
+    span(class="download-count") Total Downloads: #{total}
+    code
+      pre.
+        To Download via command line
+        * wget http://node-arm.herokuapp.com/node_latest_armhf.deb
+
+        Other options are
+        * http://node-arm.herokuapp.com/node_0.10.29_armhf.deb
+        * http://node-arm.herokuapp.com/node_0.10.28_armhf.deb
+
+    h1 Step 2: Install
+    code
+      pre.
+        sudo dpkg -i node_latest_armhf.deb
+        # Check installation
+        node -v
