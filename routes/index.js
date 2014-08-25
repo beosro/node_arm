@@ -19,10 +19,7 @@ router.get('/', function(req, res) {
       collection.mapReduce(map, reduce, {out : {inline: 1}}, function(err, results) {
         collection.find().sort({"version": -1}).toArray(function(err, rs) {
           var total = results.length > 0 ? results[0].value : "Over 9,000";
-          var dl_1 =  rs.length > 0 ? rs[0].downloads : "Over 9,000";
-          var dl_2 =  rs.length > 1 ? rs[1].downloads : "Over 9,000";
-          var dl_3 =  rs.length > 2 ? rs[2].downloads : "Over 9,000";
-          res.render('index', { title: 'node-arm', total: total, download_count_1: dl_1, download_count_2: dl_2, download_count_3: dl_3 });
+          res.render('index', { title: 'node-arm', total: total, versions: rs });
         });
       });
     });

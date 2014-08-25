@@ -24,14 +24,14 @@ block content
     h1 Step 1: Download
     ul
       li
-        a(href="/node_latest_armhf.deb", class="download-link") v0.10.31 
-        span(class="download-count") (#{download_count_1} downloads)
+        a(href="/node_latest_armhf.deb", class="download-link") v#{versions[0].version} 
+        span(class="download-count") (#{versions[0].downloads} downloads)
       li
-        a(href="/node_0.10.30_armhf.deb", class="download-link") v0.10.30 
-        span(class="download-count") (#{download_count_2} downloads)
+        a(href="/node_#{versions[1].version}_armhf.deb", class="download-link") v#{versions[1].version} 
+        span(class="download-count") (#{versions[1].downloads} downloads)
       li
-        a(href="/node_0.10.29_armhf.deb", class="download-link") v0.10.29 
-        span(class="download-count") (#{download_count_3} downloads)
+        a(href="/node_#{versions[2].version}_armhf.deb", class="download-link") v#{versions[2].version} 
+        span(class="download-count") (#{versions[2].downloads} downloads)
 
     span(class="download-count") Total Downloads: #{total}
     code
@@ -40,8 +40,8 @@ block content
         * wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 
         Other options are
-        * http://node-arm.herokuapp.com/node_0.10.29_armhf.deb
-        * http://node-arm.herokuapp.com/node_0.10.28_armhf.deb
+        * http://node-arm.herokuapp.com/node_#{versions[1].version}_armhf.deb
+        * http://node-arm.herokuapp.com/node_#{versions[2].version}_armhf.deb
 
     h1 Step 2: Install
     code
