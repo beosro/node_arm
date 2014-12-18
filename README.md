@@ -8,10 +8,10 @@ sudo dpkg -i node_latest_armhf.deb
 node -v
 ```
 
-This will install node.js version 0.10.32
+This will install node.js version 0.10.34
 Other versions are available:
-- node_0.10.31-1_armhf.deb
-- node_0.10.30-1_armhf.deb
+- node_0.10.33-1_armhf.deb
+- node_0.10.32-1_armhf.deb
 
 Just replace "node_latest_armhf.deb" with one of these names.
 
