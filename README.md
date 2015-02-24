@@ -1,5 +1,14 @@
 node_arm (Raspbian Wheezy)
 ==========================
+### Add as debian repository
+```
+echo "deb http://node-arm.herokuapp.com/ /" | sudo tee --append /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install node
+node -v
+```
+
+
 ### Installing node for ARM (Tested on Raspberry Pi Model B)
 ```
 wget http://node-arm.herokuapp.com/node_latest_armhf.deb

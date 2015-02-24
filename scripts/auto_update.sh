@@ -52,6 +52,9 @@ do
   echo "});" >> ../$appfile
 done
 
+# Update package.gz
+dpkg-scanpackages ./ | gzip -9c > Packages.gz
+
 # Commit and push all the files
 cd ../
 git add .
