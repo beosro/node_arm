@@ -57,4 +57,8 @@ router.get('/node_latest_armhf.deb', function (req, res) {
   });
 });
 
+router.get('/files/Packages.gz', function (req, res) {
+  res.sendfile(__dirname + '/files/Packages.gz');
+});
+
 module.exports = router;
