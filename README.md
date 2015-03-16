@@ -15,10 +15,13 @@ wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 sudo dpkg -i node_latest_armhf.deb
 # Check installation
 node -v
+
+# Unstable version is available at node_latest_unstable_armhf.deb
 ```
 
 This will install node.js version 0.12.0
 Other versions are available:
+- node_latest_unstable_armhf.deb
 - node_0.10.35-1_armhf.deb
 - node_0.10.34-1_armhf.deb
 
