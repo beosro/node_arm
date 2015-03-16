@@ -57,6 +57,16 @@ router.get('/node_latest_armhf.deb', function (req, res) {
   });
 });
 
+router.get('/node_latest_unstable_armhf.deb', function (req, res) {
+  mongo.Db.connect(mongoUri, function (err, db) {
+    db.collection('downloads', function(err, collection) {
+      collection.update({ "version": "0.0.1" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err,rs) {
+        res.download(__dirname + '/files/node_0.11.16-1_armhf.deb', 'node_latest_unstable_armhf.deb');
+      });
+    });
+  });
+});
+
 
 
 module.exports = router;
