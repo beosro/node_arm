@@ -7,7 +7,7 @@ var mongoUri = process.env.MONGOLAB_URI ||
 
 router.get('/', function(req, res) {
   mongo.Db.connect(mongoUri, function (err, db) {
-    if (typeof db !== 'undefined') {
+    if (db != null) {
       db.collection('downloads', function(err, collection) {
         var map = function() { emit("downloads", this.downloads); };
         var reduce = function(key, values) {
@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
 
 router.get('/node_0.10.35_armhf.deb', function (req, res) {
   mongo.Db.connect(mongoUri, function (err, db) {
-    if (typeof db !== 'undefined') {
+    if (db != null) {
       db.collection('downloads', function(err, collection) {
         collection.update({ "version": "0.10.35" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err, rs){
           db.close();
@@ -45,7 +45,7 @@ router.get('/node_0.10.35_armhf.deb', function (req, res) {
 
 router.get('/node_0.10.36_armhf.deb', function (req, res) {
   mongo.Db.connect(mongoUri, function (err, db) {
-    if (typeof db !== 'undefined') {
+    if (db != null) {
       db.collection('downloads', function(err, collection) {
         collection.update({ "version": "0.10.36" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err,rs) {
           db.close();
@@ -58,7 +58,7 @@ router.get('/node_0.10.36_armhf.deb', function (req, res) {
 
 router.get('/node_latest_armhf.deb', function (req, res) {
   mongo.Db.connect(mongoUri, function (err, db) {
-    if (typeof db !== 'undefined') {
+    if (db != null) {
       db.collection('downloads', function(err, collection) {
         collection.update({ "version": "0.12.1" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err,rs) {
           db.close();
@@ -71,7 +71,7 @@ router.get('/node_latest_armhf.deb', function (req, res) {
 
 router.get('/node_latest_unstable_armhf.deb', function (req, res) {
   mongo.Db.connect(mongoUri, function (err, db) {
-    if (typeof db !== 'undefined') {
+    if (db != null) {
       db.collection('downloads', function(err, collection) {
         collection.update({ "version": "0.0.1" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err,rs) {
           db.close();
