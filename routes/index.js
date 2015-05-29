@@ -26,7 +26,11 @@ router.get('/', function(req, res) {
         });
       });
     } else {
-      res.render('index', { title: 'node-arm', total: 'N/A', versions: [] });
+      res.render('index', { title: 'node-arm', total: 'N/A', versions: [
+        { version: '0.10.35', downloads: 0 },
+        { version: '0.10.36', downloads: 0 },
+        { version: '0.12.1', downloads: 0 }
+      ] });
     }
   });
 
