@@ -25,6 +25,8 @@ router.get('/', function(req, res) {
           });
         });
       });
+    } else {
+      res.render('index', { title: 'node-arm', total: 'N/A', versions: [] });
     }
   });
 
@@ -39,6 +41,8 @@ router.get('/node_0.10.35_armhf.deb', function (req, res) {
           res.download(__dirname + '/files/node_0.10.35-1_armhf.deb');
         });
       });
+    } else {
+      res.download(__dirname + '/files/node_0.10.35-1_armhf.deb');
     }
   });
 });
@@ -52,6 +56,8 @@ router.get('/node_0.10.36_armhf.deb', function (req, res) {
           res.download(__dirname + '/files/node_0.10.36-1_armhf.deb');
         });
       });
+    } else {
+      res.download(__dirname + '/files/node_0.10.36-1_armhf.deb');
     }
   });
 });
@@ -65,6 +71,8 @@ router.get('/node_latest_armhf.deb', function (req, res) {
           res.download(__dirname + '/files/node_0.12.1-1_armhf.deb', 'node_latest_armhf.deb');
         });
       });
+    } else {
+      res.download(__dirname + '/files/node_0.12.1-1_armhf.deb', 'node_latest_armhf.deb');
     }
   });
 });
@@ -78,6 +86,8 @@ router.get('/node_latest_unstable_armhf.deb', function (req, res) {
           res.download(__dirname + '/files/node_0.11.16-1_armhf.deb', 'node_latest_unstable_armhf.deb');
         });
       });
+    } else {
+      res.download(__dirname + '/files/node_0.11.16-1_armhf.deb', 'node_latest_unstable_armhf.deb');
     }
   });
 });
