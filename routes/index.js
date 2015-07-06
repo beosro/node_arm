@@ -70,13 +70,13 @@ router.get('/node_latest_armhf.deb', function (req, res) {
   mongo.Db.connect(mongoUri, function (err, db) {
     if (db != null) {
       db.collection('downloads', function(err, collection) {
-        collection.update({ "version": "0.12.1" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err,rs) {
+        collection.update({ "version": "0.12.6" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err,rs) {
           db.close();
-          res.download(__dirname + '/files/node_0.12.1-1_armhf.deb', 'node_latest_armhf.deb');
+          res.download(__dirname + '/files/node_0.12.6-1_armhf.deb', 'node_latest_armhf.deb');
         });
       });
     } else {
-      res.download(__dirname + '/files/node_0.12.1-1_armhf.deb', 'node_latest_armhf.deb');
+      res.download(__dirname + '/files/node_0.12.6-1_armhf.deb', 'node_latest_armhf.deb');
     }
   });
 });
