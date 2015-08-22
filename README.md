@@ -1,5 +1,10 @@
 node_arm (Raspbian Wheezy)
 ==========================
+### Migration from Heroku
+Heroku is starting to make free tier apps have mandatory downtime for 6 hours a day so I'm migrating over to redhat openshift.
+Here's the current URL for that.
+http://nodearm-nathanjohnson320.rhcloud.com/
+
 ### Add as debian repository
 ```
 echo "deb http://node-arm.herokuapp.com/ /" | sudo tee --append /etc/apt/sources.list
@@ -19,7 +24,7 @@ node -v
 # Unstable version is available at node_latest_unstable_armhf.deb
 ```
 
-This will install node.js version 0.12.1
+This will install node.js version 0.12.6
 Other versions are available:
 - node_latest_unstable_armhf.deb
 - node_0.10.36-1_armhf.deb
