@@ -41,7 +41,7 @@ block content
         span(class="download-count") (#{versions[0].downloads} downloads)
       li
         a(href="/node_#{versions[1].version}_armhf.deb", class="download-link") v#{versions[1].version} 
-        span(class="download-count") (#{versions[1].downloads} downloads)
+        span(class="download-count") (#{versions[1].downloads} downloads)w
       li
         a(href="/node_#{versions[2].version}_armhf.deb", class="download-link") v#{versions[2].version} 
         span(class="download-count") (#{versions[2].downloads} downloads)
@@ -49,11 +49,17 @@ block content
     span(class="download-count") Total Downloads: #{total}
     code
       pre.
-        To Download via command line
+        NOTE: You will have to upgrade to jessie version of debian in order to run latest node!
+	Replace all instances of "wheezy" in /etc/apt/sources.list
+	sudo apt-get update
+	sudo apt-get dist-upgrade
+
+	To Download via command line
         * wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 
         Other options are
         * http://node-arm.herokuapp.com/node_latest_unstable_armhf.deb
+	* http://node-arm.herokuapp.com/node_archive_armhf.deb
         * http://node-arm.herokuapp.com/node_#{versions[1].version}_armhf.deb
         * http://node-arm.herokuapp.com/node_#{versions[2].version}_armhf.deb
 
