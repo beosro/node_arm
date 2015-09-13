@@ -1,9 +1,12 @@
 node_arm (Raspbian Wheezy)
 ==========================
 # You will have to upgrade to jessie version of debian in order to run latest node!
+
+```
 Replace all instances of "wheezy" in /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get dist-upgrade
+```
 
 ### Migration from Heroku
 Heroku is starting to make free tier apps have mandatory downtime for 6 hours a day so I'm migrating over to redhat openshift.
