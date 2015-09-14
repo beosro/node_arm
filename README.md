@@ -35,6 +35,7 @@ node -v
 This will install node.js version 0.12.6
 Other versions are available:
 - node_latest_unstable_armhf.deb
+- node_archive_armhf.deb <- Will install 0.12.6
 - node_0.10.36-1_armhf.deb
 
 Just replace "node_latest_armhf.deb" with one of these names.
