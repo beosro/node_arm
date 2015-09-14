@@ -1,7 +1,17 @@
 node_arm (Raspbian Wheezy)
 ==========================
-# You will have to upgrade to jessie version of debian in order to run latest node!
+# GCC v4.8 or Higher is required
+Option 1 (install the newer version):
+```
+sudo apt-get update
+sudo apt-get install gcc-4.8 g++-4.8
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 20
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 20
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
+```
 
+Options 2 (upgrade 2 Jessie):
 ```
 Replace all instances of "wheezy" in /etc/apt/sources.list
 sudo apt-get update
