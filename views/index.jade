@@ -40,16 +40,21 @@ block content
         a(href="/node_latest_armhf.deb", class="download-link") v#{versions[0].version}
         span(class="download-count") (#{versions[0].downloads} downloads)
       li
-        a(href="/node_#{versions[1].version}_armhf.deb", class="download-link") v#{versions[1].version}
-        span(class="download-count") (#{versions[1].downloads} downloads)w
-      li
-        a(href="/node_#{versions[2].version}_armhf.deb", class="download-link") v#{versions[2].version}
-        span(class="download-count") (#{versions[2].downloads} downloads)
+        a(href="/node_archive_armhf.deb", class="download-link") v0.12.6
 
     span(class="download-count") Total Downloads: #{total}
     code
       pre.
-        NOTE: You will have to upgrade to jessie version of debian in order to run latest node!
+        NOTE: UPGRADE YOUR GCC to V4.8 for this package to work!
+        # Option 1 (the better option):
+        sudo apt-get update
+        sudo apt-get install gcc-4.8 g++-4.8
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 20
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 20
+        sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 50
+
+        # Options 2: Upgrade to debian Jessie
         Replace all instances of "wheezy" in /etc/apt/sources.list
         sudo apt-get update
         sudo apt-get dist-upgrade
@@ -60,8 +65,6 @@ block content
         Other options are
         * http://node-arm.herokuapp.com/node_latest_unstable_armhf.deb
         * http://node-arm.herokuapp.com/node_archive_armhf.deb
-        * http://node-arm.herokuapp.com/node_#{versions[1].version}_armhf.deb
-        * http://node-arm.herokuapp.com/node_#{versions[2].version}_armhf.deb
 
     h1 Step 2: Install
     code
