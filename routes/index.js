@@ -42,11 +42,11 @@ router.get('/node_archive_armhf.deb', function (req, res) {
       db.collection('downloads', function(err, collection) {
         collection.update({ "version": "0.12.6" }, { $inc: { "downloads": 1 } }, { upsert: true }, function(err, rs){
           db.close();
-          res.download(__dirname + '/files/node_0.12.6-1_armhf.deb');
+            res.download(__dirname + '/files/node_0.12.6-1_armhf.deb', 'node_archive_armhf.deb');
         });
       });
     } else {
-      res.download(__dirname + '/files/node_0.12.6-1_armhf.deb');
+        res.download(__dirname + '/files/node_0.12.6-1_armhf.deb', 'node_archive_armhf.deb');
     }
   });
 });
