@@ -42,7 +42,7 @@ node -v
 # Unstable version is available at node_latest_unstable_armhf.deb
 ```
 
-This will install node.js version 0.12.6
+This will install node.js version 4.2.1
 Other versions are available:
 - node_latest_unstable_armhf.deb
 - node_archive_armhf.deb <- Will install 0.12.6
